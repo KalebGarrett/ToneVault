@@ -2,7 +2,7 @@
 
 namespace ToneVault.API.Repositories.Interfaces;
 
-public interface IMongoRepository<T>  where T: BaseResource
+public interface IMongoRepository<T> where T : BaseResource
 {
     public Task<IEnumerable<T>> GetAll();
     public Task<T> GetById(string id);

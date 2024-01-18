@@ -13,7 +13,6 @@ public class ToneRepository : IMongoRepository<Tone>
         _mongoClient = mongoClient;
     }
 
-
     public Task<IEnumerable<Tone>> GetAll()
     {
         throw new NotImplementedException();
