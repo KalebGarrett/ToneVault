@@ -1,6 +1,6 @@
 ﻿namespace ToneVault.Models;
 
-public class ToneVault : BaseResource
+public class Tone : BaseResource
 {
     public string Name { get; set; }
     public string Genre { get; set; }

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToneVault.Web", "ToneVault.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToneVault.API", "ToneVault.API\ToneVault.API.csproj", "{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToneVault.Models", "ToneVault.Models\ToneVault.Models.csproj", "{B2BEADAC-DA44-470B-97BC-EA528992F315}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2BEADAC-DA44-470B-97BC-EA528992F315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BEADAC-DA44-470B-97BC-EA528992F315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BEADAC-DA44-470B-97BC-EA528992F315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BEADAC-DA44-470B-97BC-EA528992F315}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
