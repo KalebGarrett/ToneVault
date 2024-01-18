@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToneVault.Web", "ToneVault.Web\ToneVault.Web.csproj", "{EB0644EC-9E90-4946-8E97-11E800AABCA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToneVault.API", "ToneVault.API\ToneVault.API.csproj", "{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{EB0644EC-9E90-4946-8E97-11E800AABCA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB0644EC-9E90-4946-8E97-11E800AABCA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB0644EC-9E90-4946-8E97-11E800AABCA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8EE003-0B66-4C69-9B1D-E61F6C8F7741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
