@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using ToneVault.API.Repositories.Interfaces;
 using ToneVault.Models;
 
@@ -13,33 +14,65 @@ public class ToneRepository : IMongoRepository<Tone>
         _mongoClient = mongoClient;
     }
 
-    public Task<IEnumerable<Tone>> GetAll()
+    public async Task<IEnumerable<Tone>> GetAll()
     {
-        throw new NotImplementedException();
+        var tones = await GetCollection().AsQueryable()
+            .Where(u => !u.Deleted).ToListAsync();
+        
+        return tones;
     }
 
-    public Task<Tone> GetById(string id)
+    public async Task<Tone> GetById(string id)
     {
-        throw new NotImplementedException();
+        var tone = await GetCollection().AsQueryable()
+            .FirstOrDefaultAsync(u => u.Id == id && !u.Deleted);
+        
+        return tone;
     }
 
-    public Task<Tone> GetByOwnerId(string id)
+    public async Task<Tone> GetByOwnerId(string id)
     {
-        throw new NotImplementedException();
+        var tone = await GetCollection().AsQueryable()
+            .FirstOrDefaultAsync(u => u.OwnerId == id && !u.Deleted);
+
+        return tone;
     }
 
-    public Task<Tone> Create(Tone data)
+    public async Task<Tone> Create(Tone data)
     {
-        throw new NotImplementedException();
+        data.Id = Guid.NewGuid().ToString();
+        data.CreatedAt = DateTime.UtcNow;
+        data.UpdatedAt = DateTime.UtcNow;
+        await GetCollection().InsertOneAsync(data);
+        var toneList = await GetCollection().AsQueryable().ToListAsync();
+        return toneList.FirstOrDefault(x => x.Id == data.Id);
     }
 
-    public Task<Tone> Update(string id, Tone data)
+    public async Task<Tone> Update(string id, Tone data)
     {
-        throw new NotImplementedException();
+        data.UpdatedAt = DateTime.UtcNow;
+        data.Version++;
+        await GetCollection().ReplaceOneAsync(x => x.Id == id, data);
+        return data;
     }
 
-    public Task<Tone> Delete(string id, bool hardDelete = false)
+    public async Task Delete(string id, bool hardDelete = false)
     {
-        throw new NotImplementedException();
+        if (hardDelete)
+        {
+            await GetCollection().DeleteOneAsync(x => x.Id == id);
+        }
+        else
+        {
+            await GetCollection().UpdateOneAsync<Tone>(x => x.Id == id,
+                Builders<Tone>.Update.Set(x => x.Deleted, true));
+        }
+    }
+
+    private IMongoCollection<Tone> GetCollection()
+    {
+        var database = _mongoClient.GetDatabase("ToneVault");
+        var collection = database.GetCollection<Tone>("Tones");
+        return collection;
     }
 }
