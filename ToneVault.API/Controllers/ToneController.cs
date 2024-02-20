@@ -45,7 +45,6 @@ public class ToneController : ControllerBase
     public async Task<IActionResult> Create(Tone tone)
     {
         tone = await _toneRepository.Create(tone);
-        
         return Created(tone.Id, tone);
     }
 
@@ -71,7 +70,6 @@ public class ToneController : ControllerBase
     public async Task<IActionResult> Delete(string id)
     {
         await _toneRepository.Delete(id);
-        
         return NoContent();
     }
 }
