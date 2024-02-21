@@ -1,7 +1,10 @@
+using ToneVault.Web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ToneService>();
 
 var app = builder.Build();
 
