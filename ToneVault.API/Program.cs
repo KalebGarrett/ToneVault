@@ -1,5 +1,6 @@
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using ToneVault.API.Authentication;
 using ToneVault.API.Repositories;
 using ToneVault.API.Repositories.Interfaces;
 using ToneVault.Models;
@@ -12,6 +13,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ApiKeyAuthFilter>();
+
 builder.Services.AddScoped<IMongoRepository<Tone>, ToneRepository>();
 var conventionPack = new ConventionPack {new CamelCaseElementNameConvention()};
 ConventionRegistry.Register("camelCase", conventionPack, t => true);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ToneVault.API.Authentication;
 using ToneVault.API.Repositories.Interfaces;
 using ToneVault.Models;
 
@@ -14,21 +15,23 @@ public class ToneController : ControllerBase
     {
         _toneRepository = toneRepository;
     }
-    
+
     [HttpGet("")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<IActionResult> Get()
     {
-        var tones = await _toneRepository.GetAll() ;
+        var tones = await _toneRepository.GetAll();
 
         if (!tones.Any())
         {
             return NoContent();
         }
-        
+
         return Ok(tones);
     }
 
     [HttpGet("{id}")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<IActionResult> Get(string id)
     {
         var tone = await _toneRepository.GetById(id);
@@ -37,11 +40,12 @@ public class ToneController : ControllerBase
         {
             return NoContent();
         }
-        
+
         return Ok(tone);
     }
 
     [HttpPost("")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<IActionResult> Create(Tone tone)
     {
         tone = await _toneRepository.Create(tone);
@@ -55,14 +59,14 @@ public class ToneController : ControllerBase
         {
             return BadRequest();
         }
-        
+
         tone = await _toneRepository.Update(id, tone);
 
         if (tone == null)
         {
             return NotFound();
         }
-        
+
         return Ok(tone);
     }
 
