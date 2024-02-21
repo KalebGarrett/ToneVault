@@ -29,15 +29,7 @@ public class ToneRepository : IMongoRepository<Tone>
         
         return tone;
     }
-
-    public async Task<Tone> GetByOwnerId(string id)
-    {
-        var tone = await GetCollection().AsQueryable()
-            .FirstOrDefaultAsync(u => u.OwnerId == id && !u.Deleted);
-
-        return tone;
-    }
-
+    
     public async Task<Tone> Create(Tone data)
     {
         data.Id = Guid.NewGuid().ToString();
