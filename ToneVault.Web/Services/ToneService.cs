@@ -21,16 +21,11 @@ public class ToneService
         var requestHeader = AuthConstant.ApiKeyRequestHeader; 
 
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
-
         var response = await client.GetAsync("https://tonevaultapi.azurewebsites.net/tones");
 
-        if (response.IsSuccessStatusCode)
-        {
-            var json = await response.Content.ReadAsStringAsync();
-            var tones = JsonSerializer.Deserialize<List<Tone>>(json);
-            return tones;
-        }
-
-        return new List<Tone>();
+        if (!response.IsSuccessStatusCode) return new List<Tone>();
+        var json = await response.Content.ReadAsStringAsync();
+        var tones = JsonSerializer.Deserialize<List<Tone>>(json);
+        return tones;
     }
 }
