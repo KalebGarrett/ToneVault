@@ -18,9 +18,10 @@ public class ToneService
         using var client = new HttpClient();
 
         var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
-        var requestHeader = _configuration.GetValue<string>(AuthConstant.ApiKeyRequestHeader);
+        var requestHeader = AuthConstant.ApiKeyRequestHeader; 
 
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
+
         var response = await client.GetAsync("https://tonevaultapi.azurewebsites.net/tones");
 
         if (response.IsSuccessStatusCode)
