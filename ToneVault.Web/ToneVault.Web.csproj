@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ToneVault.Models\ToneVault.Models.csproj" />
+    </ItemGroup>
+
 </Project>
