@@ -28,7 +28,6 @@ public class ToneService
         {
             var json = await response.Content.ReadAsStringAsync();
             var tones = JsonSerializer.Deserialize<List<Tone>>(json);
-            Console.WriteLine(tones); // Remove test case
             return tones;
         }
 
