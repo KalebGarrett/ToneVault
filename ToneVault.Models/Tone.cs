@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ToneVault.Models;
 
@@ -10,7 +11,10 @@ public class Tone : BaseResource
     [JsonPropertyName("equalizer")] public Equalizer Equalizer { get; set; }
     [JsonPropertyName("reverb")] public int Reverb { get; set; }
     [JsonPropertyName("volume")] public int Volume { get; set; }
-    [JsonPropertyName("description")] public string Description { get; set; }
+
+    [StringLength(100)]
+    [JsonPropertyName("description")]
+    public string Description { get; set; }
 }
 
 public class Equalizer

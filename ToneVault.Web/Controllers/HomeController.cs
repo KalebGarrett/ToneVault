@@ -16,9 +16,13 @@ public class HomeController : Controller
         _toneService = toneService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var model = new IndexViewModel
+        {
+            Tones = await _toneService.Get()
+        };
+        return View(model);
     }
 
     public async Task<IActionResult> Browse()
