@@ -1,0 +1,68 @@
+﻿@Model
+
+@{
+    ViewData["Title"] = "Add New Tones";
+}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <img src="../img/guitar.png" alt="Guitar" style="height: 100%; width: 100%; object-fit: cover"/>
+        </div>
+        <div class="col-md-6">
+            <form class="card p-3 bg-dark">
+                <img src="../img/Tone Vault Logo.png" class="logo-center" alt="Tone Vault"/>
+                <hr class="text-white"/>
+                <div class="form-group text-white">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group text-white">
+                    <label class="mt-2" for="genre">Genre</label>
+                    <input type="text" class="form-control" id="genre">
+                </div>
+                <hr class="text-white"/>
+                <div class="row">
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="gain">Gain</label>
+                        <input type="number" class="form-control" id="gain" min="0" max="11">
+                    </div>
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="bass">Bass</label>
+                        <input type="number" class="form-control" id="bass" min="0" max="11">
+                    </div>
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="middle">Middle</label>
+                        <input type="number" class="form-control" id="middle" min="0" max="11">
+                    </div>
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="treble">Treble</label>
+                        <input type="number" class="form-control" id="treble" min="0" max="11">
+                    </div>
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="reverb">Reverb</label>
+                        <input type="number" class="form-control" id="reverb" min="0" max="11">
+                    </div>
+                    <div class="col-md-2 form-group text-white">
+                        <label class="mt-2" for="volume">Volume</label>
+                        <input type="number" class="form-control" id="volume" min="0" max="11">
+                    </div>
+                </div>
+                <hr class="text-white"/>
+                <div class="form-group text-white">
+                    <label class="mt-2" for="created-by">Created By</label>
+                    <input type="text" class="form-control" id="created-by">
+                </div>
+                <div class="form-group text-white">
+                    <label class="mt-2" for="description">Description</label>
+                    <textarea type="textarea" class="form-control" id="description"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary mt-3">Add Tone</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{
+
+}

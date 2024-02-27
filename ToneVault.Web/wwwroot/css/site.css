@@ -17,3 +17,11 @@ body {
   margin-bottom: 60px;
   background-color: #555555;
 }
+
+.logo-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 250px;
+  width: 250px;
+}
