@@ -18,7 +18,7 @@ public class ToneService
         using var client = new HttpClient();
 
         var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
-        var requestHeader = AuthConstant.ApiKeyRequestHeader; 
+        var requestHeader = AuthConstant.ApiKeyRequestHeader;
 
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
         var response = await client.GetAsync("https://tonevaultapi.azurewebsites.net/tones");
@@ -27,5 +27,21 @@ public class ToneService
         var json = await response.Content.ReadAsStringAsync();
         var tones = JsonSerializer.Deserialize<List<Tone>>(json);
         return tones;
+    }
+
+    public async Task<Tone> Get(string id)
+    {
+        using var client = new HttpClient();
+
+        var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
+        var requestHeader = AuthConstant.ApiKeyRequestHeader;
+
+        client.DefaultRequestHeaders.Add(requestHeader, apiKey);
+        var response = await client.GetAsync($"https://tonevaultapi.azurewebsites.net/tones/{id}");
+
+        if (!response.IsSuccessStatusCode) return new Tone();
+        var json = await response.Content.ReadAsStringAsync();
+        var tone = JsonSerializer.Deserialize<Tone>(json);
+        return tone;
     }
 }

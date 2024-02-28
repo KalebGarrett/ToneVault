@@ -37,6 +37,16 @@ public class HomeController : Controller
         return View(model);
     }
 
+    [HttpGet("tone/{id}")]
+    public async Task<IActionResult> Tone(string id)
+    {
+        var model = new ToneViewModel()
+        {
+            Tone = await _toneService.Get(id)
+        };
+        return View(model);
+    }
+
     public IActionResult AddNewTones()
     {
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";

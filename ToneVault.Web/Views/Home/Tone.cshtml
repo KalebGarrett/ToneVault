@@ -1,0 +1,11 @@
+﻿@model ToneViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Tone.Name}";
+}
+
+<div class="text-white">
+    <h1>@Model.Tone.Name</h1>
+    <h4>@Model.Tone.CreatedBy</h4>
+    <h4>@Model.Tone.Description</h4>
+</div>
