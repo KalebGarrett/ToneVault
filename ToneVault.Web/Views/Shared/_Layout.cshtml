@@ -11,10 +11,10 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: #212529">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 justify-content-around" style="background-color: #212529">
         <div class="container-fluid">
             <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="../img/Tone Vault Logo.png" alt="Tone Vault" style="max-height: 65px; max-width: 65px"/>
+                <img src="../img/Tone Vault Logo Red.png" alt="Tone Vault" style="max-height: 65px; max-width: 65px"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +36,9 @@
         </div>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
+<main role="main" class="pb-3">
+    @RenderBody()
+</main>
 <footer class="footer" style="background-color: #212529">
     <div class="container text-white">
         &copy; @DateTime.UtcNow.Year - ToneVault | All Rights Reserved

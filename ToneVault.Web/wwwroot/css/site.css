@@ -1,3 +1,16 @@
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+
 html {
   font-size: 14px;
 }
@@ -15,10 +28,20 @@ html {
 
 body {
   margin-bottom: 60px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/simon-weisser-phS37wg8cQg-unsplash.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: black;
+}
+
+video#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  opacity: 0.4;
 }
 
 .logo-center {
