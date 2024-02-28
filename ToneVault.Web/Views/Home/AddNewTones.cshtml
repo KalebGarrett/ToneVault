@@ -4,18 +4,25 @@
     ViewData["Title"] = "Add New Tones";
 }
 
-<div class="container-fluid">
+<style>
+    body
+    {
+        background-image: url("@ViewBag.ImagePath");
+    }
+</style>
+
+<div class="container">
     <div class="row">
         <div class="col-md-5 d-none d-md-block">
             <img src="../img/pexels-cristian-benavides-2049414.jpg" alt="Guitar" class="guitar-pic img-fluid"/>
         </div>
         <div class="col-md-7">
             <form class="card p-3 bg-dark-opacity">
-                <img src="../img/Tone Vault Logo.png" class="logo-center" alt="Tone Vault"/>
+                <img src="../img/Tone Vault Logo Red.png" class="logo-center" alt="Tone Vault"/>
                 <hr class="text-white"/>
                 <div class="form-group text-white">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="name">Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="name" required="required">
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="genre">Genre</label>
@@ -24,34 +31,34 @@
                 <hr class="text-white"/>
                 <div class="row">
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="gain">Gain</label>
-                        <input type="number" class="form-control" id="gain" min="0" max="11">
+                        <label class="mt-2" for="gain">Gain <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="gain" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="bass">Bass</label>
-                        <input type="number" class="form-control" id="bass" min="0" max="11">
+                        <label class="mt-2" for="bass">Bass <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="bass" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="middle">Middle</label>
-                        <input type="number" class="form-control" id="middle" min="0" max="11">
+                        <label class="mt-2" for="middle">Middle <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="middle" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="treble">Treble</label>
-                        <input type="number" class="form-control" id="treble" min="0" max="11">
+                        <label class="mt-2" for="treble">Treble <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="treble" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="reverb">Reverb</label>
-                        <input type="number" class="form-control" id="reverb" min="0" max="11">
+                        <label class="mt-2" for="reverb">Reverb <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="reverb" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="volume">Volume</label>
-                        <input type="number" class="form-control" id="volume" min="0" max="11">
+                        <label class="mt-2" for="volume">Volume <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="volume" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
                     </div>
                 </div>
                 <hr class="text-white"/>
                 <div class="form-group text-white">
-                    <label class="mt-2" for="created-by">Created By</label>
-                    <input type="text" class="form-control" id="created-by">
+                    <label class="mt-2" for="created-by">Created By <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="created-by" required="required">
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="description">Description</label>
