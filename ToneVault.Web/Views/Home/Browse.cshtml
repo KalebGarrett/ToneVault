@@ -37,17 +37,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var tones in Model.Tones.OrderBy(x => x.Name))
+                        @foreach (var tones in Model.Tones.OrderBy(x => x.ToneName))
                         {
                             <tr>
-                                <td>@tones.Name</td>
+                                <td>@tones.ToneName</td>
                                 <td>@tones.Genre</td>
                                 <td>@tones.Equalizer.Gain</td>
                                 <td>@tones.Equalizer.Bass</td>
                                 <td>@tones.Equalizer.Middle</td>
                                 <td>@tones.Equalizer.Treble</td>
-                                <td>@tones.Reverb</td>
-                                <td>@tones.Volume</td>
+                                <td>@tones.Equalizer.Reverb</td>
+                                <td>@tones.Equalizer.Volume</td>
                                 <td>@tones.Description</td>
                                 <td><a href="/tone/@tones.Id" class="text-decoration-none link-danger">@tones.CreatedBy</a></td>
                             </tr>

@@ -1,7 +1,7 @@
 ﻿@model ToneViewModel
 
 @{
-    ViewData["Title"] = $"{Model.Tone.Name}";
+    ViewData["Title"] = $"{Model.Tone.ToneName}";
 }
 
 <style>
@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class="card bg-dark text-center text-white border border-light shadow-0">
                 <img src="../img/marshall amp.jpg" class="img-fluid" alt="Marshall Amp"/>
-                <h2 class="card-header">@tone.Name</h2>
+                <h2 class="card-header">@tone.ToneName</h2>
                 <div class="card-body">
                     <h1 class="card-text">Genre: @tone.Genre</h1>
                     <h3 class="card-text mt-3">Description:</h3>
@@ -43,10 +43,10 @@
                                     <b>Treble:</b> <br/> @tone.Equalizer.Treble
                                 </li>
                                 <li class="list-group-item list-group-bg">
-                                    <b>Reverb:</b> <br/> @tone.Reverb
+                                    <b>Reverb:</b> <br/> @tone.Equalizer.Reverb
                                 </li>
                                 <li class="list-group-item list-group-bg">
-                                    <b>Volume:</b> <br/> @tone.Volume
+                                    <b>Volume:</b> <br/> @tone.Equalizer.Volume
                                 </li>
                             </div>
                         </div>
