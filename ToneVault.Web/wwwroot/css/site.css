@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: black;
+  background-attachment: fixed;
 }
 
 video#background-video {
@@ -50,4 +51,9 @@ video#background-video {
 .bg-dark-opacity {
   background-color: rgba(33, 37, 41, 0.8);
   border-radius: 5px
+}
+
+.list-group-bg {
+  background-color: #3b4045;
+  color: white;
 }

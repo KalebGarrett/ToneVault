@@ -4,8 +4,58 @@
     ViewData["Title"] = $"{Model.Tone.Name}";
 }
 
-<div class="text-white">
-    <h1>@Model.Tone.Name</h1>
-    <h4>@Model.Tone.CreatedBy</h4>
-    <h4>@Model.Tone.Description</h4>
+<style>
+    body
+    {
+        background-image: url("@ViewBag.ImagePath");
+    }
+</style>
+
+@{
+    var tone = Model.Tone;
+}
+
+<div class="container mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-dark text-center text-white border border-light shadow-0">
+                <img src="../img/marshall amp.jpg" class="img-fluid" alt="Marshall Amp"/>
+                <h2 class="card-header">@tone.Name</h2>
+                <div class="card-body">
+                    <h1 class="card-text">Genre: @tone.Genre</h1>
+                    <h3 class="card-text mt-3">Description:</h3>
+                    <p class="card-text">@tone.Description</p>
+                    <hr class="text-white"/>
+                    <button class="btn btn-danger w-75" data-bs-toggle="collapse" data-bs-target="#project_@Model.Tone.Id">Equalizer Settings</button>
+                    <ul class="list-group mt-3 bg-text-white list-group-flush collapse" id="project_@Model.Tone.Id">
+                        <div class="row justify-content-center">
+                            <div class="col-md-9" style="border-radius: 5px;">
+                                <li class="list-group-item list-group-bg">
+                                    <b>Gain:</b> <br/> @tone.Equalizer.Gain
+                                </li>
+                                <li class="list-group-item list-group-bg">
+                                    <b>Bass:</b> <br/> @tone.Equalizer.Bass
+                                </li>
+                                <li class="list-group-item list-group-bg">
+                                    <b>Middle:</b> <br/> @tone.Equalizer.Middle
+                                </li>
+                                <li class="list-group-item list-group-bg">
+                                    <b>Treble:</b> <br/> @tone.Equalizer.Treble
+                                </li>
+                                <li class="list-group-item list-group-bg">
+                                    <b>Reverb:</b> <br/> @tone.Reverb
+                                </li>
+                                <li class="list-group-item list-group-bg">
+                                    <b>Volume:</b> <br/> @tone.Volume
+                                </li>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    Created By: @tone.CreatedBy
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
