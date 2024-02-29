@@ -19,57 +19,55 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-12">
-            <div class="card bg-dark p-3">
-                <div class="dataTable text-white">
-                    <div class="table-responsive mt-4" id="toneTable">
-                        <table class="table table-striped table-hover table-bordered table-dark" id="tonesTable">
-                            <thead>
+            <div class="card bg-dark p-3 text-light">
+                <div class="table-responsive mt-4">
+                    <table class="table table-bordered display text-light" id="tonesTable">
+                        <thead>
+                        <tr>
+                            <th scope="col">Tone Name</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Gain</th>
+                            <th scope="col">Bass</th>
+                            <th scope="col">Middle</th>
+                            <th scope="col">Treble</th>
+                            <th scope="col">Reverb</th>
+                            <th scope="col">Volume</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Created By</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var tones in Model.Tones.OrderBy(x => x.Name))
+                        {
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Genre</th>
-                                <th scope="col">Gain</th>
-                                <th scope="col">Bass</th>
-                                <th scope="col">Middle</th>
-                                <th scope="col">Treble</th>
-                                <th scope="col">Reverb</th>
-                                <th scope="col">Volume</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Created By</th>
+                                <td>@tones.Name</td>
+                                <td>@tones.Genre</td>
+                                <td>@tones.Equalizer.Gain</td>
+                                <td>@tones.Equalizer.Bass</td>
+                                <td>@tones.Equalizer.Middle</td>
+                                <td>@tones.Equalizer.Treble</td>
+                                <td>@tones.Reverb</td>
+                                <td>@tones.Volume</td>
+                                <td>@tones.Description</td>
+                                <td><a href="/tone/@tones.Id" class="text-decoration-none link-danger">@tones.CreatedBy</a></td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            @foreach (var tones in Model.Tones.OrderBy(x => x.Name))
-                            {
-                                <tr>
-                                    <td>@tones.Name</td>
-                                    <td>@tones.Genre</td>
-                                    <td>@tones.Equalizer.Gain</td>
-                                    <td>@tones.Equalizer.Bass</td>
-                                    <td>@tones.Equalizer.Middle</td>
-                                    <td>@tones.Equalizer.Treble</td>
-                                    <td>@tones.Reverb</td>
-                                    <td>@tones.Volume</td>
-                                    <td>@tones.Description</td>
-                                    <td>@tones.CreatedBy</td>
-                                </tr>
-                            }
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Genre</th>
-                                <th scope="col">Gain</th>
-                                <th scope="col">Bass</th>
-                                <th scope="col">Middle</th>
-                                <th scope="col">Treble</th>
-                                <th scope="col">Reverb</th>
-                                <th scope="col">Volume</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Created By</th>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                        }
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th scope="col">Tone Name</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Gain</th>
+                            <th scope="col">Bass</th>
+                            <th scope="col">Middle</th>
+                            <th scope="col">Treble</th>
+                            <th scope="col">Reverb</th>
+                            <th scope="col">Volume</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Created By</th>
+                        </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>

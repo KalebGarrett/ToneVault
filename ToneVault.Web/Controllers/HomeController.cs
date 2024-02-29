@@ -44,6 +44,7 @@ public class HomeController : Controller
         {
             Tone = await _toneService.Get(id)
         };
+        ViewBag.ImagePath = "../img/luana-azevedo-OYVaNuVoqVw-unsplash.jpg";
         return View(model);
     }
 
