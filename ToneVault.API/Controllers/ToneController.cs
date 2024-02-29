@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using ToneVault.API.Authentication;
 using ToneVault.API.Repositories.Interfaces;
 using ToneVault.Models;
@@ -18,7 +19,7 @@ public class ToneController : ControllerBase
 
     [HttpGet("")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromHeader(Name = "x-api-key")][Required] string header)
     {
         var tones = await _toneRepository.GetAll();
 
@@ -32,7 +33,7 @@ public class ToneController : ControllerBase
 
     [HttpGet("{id}")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> Get(string id)
+    public async Task<IActionResult> GetById(string id, [FromHeader(Name = "x-api-key")][Required] string header)
     {
         var tone = await _toneRepository.GetById(id);
 
@@ -46,7 +47,7 @@ public class ToneController : ControllerBase
 
     [HttpPost("")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> Create(Tone tone)
+    public async Task<IActionResult> Create(Tone tone, [FromHeader(Name = "x-api-key")][Required] string header)
     {
         tone = await _toneRepository.Create(tone);
         return Created(tone.Id, tone);
