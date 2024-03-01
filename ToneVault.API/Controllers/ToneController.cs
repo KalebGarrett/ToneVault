@@ -19,13 +19,13 @@ public class ToneController : ControllerBase
 
     [HttpGet("")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> Get([FromHeader(Name = "x-api-key")][Required] string header)
+    public async Task<IActionResult> Get([FromHeader(Name = "x-api-key")] [Required] string header)
     {
         var tones = await _toneRepository.GetAll();
 
         if (!tones.Any())
         {
-            return NoContent();
+            return NotFound();
         }
 
         return Ok(tones);
@@ -33,35 +33,9 @@ public class ToneController : ControllerBase
 
     [HttpGet("{id}")]
     [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> GetById(string id, [FromHeader(Name = "x-api-key")][Required] string header)
+    public async Task<IActionResult> GetById(string id, [FromHeader(Name = "x-api-key")] [Required] string header)
     {
         var tone = await _toneRepository.GetById(id);
-
-        if (tone == null)
-        {
-            return NoContent();
-        }
-
-        return Ok(tone);
-    }
-
-    [HttpPost("")]
-    [ServiceFilter(typeof(ApiKeyAuthFilter))]
-    public async Task<IActionResult> Create(Tone tone, [FromHeader(Name = "x-api-key")][Required] string header)
-    {
-        tone = await _toneRepository.Create(tone);
-        return Created(tone.Id, tone);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(string id, Tone tone)
-    {
-        if (id != tone.Id)
-        {
-            return BadRequest();
-        }
-
-        tone = await _toneRepository.Update(id, tone);
 
         if (tone == null)
         {
@@ -71,8 +45,33 @@ public class ToneController : ControllerBase
         return Ok(tone);
     }
 
+    [HttpPost("")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    public async Task<IActionResult> Create(Tone tone, [FromHeader(Name = "x-api-key")] [Required] string header)
+    {
+        tone = await _toneRepository.Create(tone);
+        return Created(tone.Id, tone);
+    }
+
+    [HttpPut("{id}")]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    public async Task<IActionResult> Update(string id, Tone tone,
+        [FromHeader(Name = "x-api-key")] [Required]
+        string header)
+    {
+        tone = await _toneRepository.Update(id, tone);
+
+        if (id != tone.Id)
+        {
+            return NotFound();
+        }
+
+        return Ok(tone);
+    }
+
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    public async Task<IActionResult> Delete(string id, [FromHeader(Name = "x-api-key")] [Required] string header)
     {
         await _toneRepository.Delete(id);
         return NoContent();
