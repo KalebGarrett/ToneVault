@@ -1,4 +1,5 @@
-﻿@Model
+﻿@using ToneVault.Web.Controllers
+@model AddNewTonesModel
 
 @{
     ViewData["Title"] = "Add New Tones";
@@ -12,64 +13,57 @@
 </style>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-5 d-none d-md-block">
-            <img src="../img/pexels-cristian-benavides-2049414.jpg" alt="Guitar" class="guitar-pic img-fluid"/>
-        </div>
-        <div class="col-md-7">
-            <form class="card p-3 bg-dark-opacity">
+    <div class="row justify-content-center">
+        <form asp-action="AddNewTones" method="post" class="col-md-6">
+            <div class="card p-3 bg-dark-opacity">
                 <img src="../img/Tone Vault Logo Red.png" class="logo-center" alt="Tone Vault"/>
                 <hr class="text-white"/>
                 <div class="form-group text-white">
-                    <label for="name">Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="name" required="required">
+                    <label for="name">Tone Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" asp-for="Tone.ToneName" id="toneName" maxlength="35" required="required">
                 </div>
                 <div class="form-group text-white">
-                    <label class="mt-2" for="genre">Genre</label>
-                    <input type="text" class="form-control" id="genre">
+                    <label class="mt-2" for="genre">Genre <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" asp-for="Tone.Genre" id="genre" maxlength="35" required="required">
                 </div>
                 <hr class="text-white"/>
                 <div class="row">
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="gain">Gain <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="gain" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="gain">Gain</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Gain" id min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="bass">Bass <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="bass" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="bass">Bass</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Bass" id="bass" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="middle">Middle <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="middle" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="middle">Middle</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Middle" id="middle" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="treble">Treble <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="treble" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="treble">Treble</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Treble" id="treble" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="reverb">Reverb <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="reverb" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="reverb">Reverb</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Reverb" id="reverb" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                     <div class="col-md-2 form-group text-white">
-                        <label class="mt-2" for="volume">Volume <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="volume" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)" required="required">
+                        <label class="mt-2" for="volume">Volume</label>
+                        <input type="number" class="form-control" asp-for="Tone.Equalizer.Volume" id="volume" min="0" max="11" value="0" oninput="this.value=(parseInt(this.value) || 0)">
                     </div>
                 </div>
                 <hr class="text-white"/>
                 <div class="form-group text-white">
                     <label class="mt-2" for="created-by">Created By <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="created-by" required="required">
+                    <input type="text" class="form-control" asp-for="Tone.CreatedBy" id="created-by" maxlength="35" required="required">
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="description">Description</label>
-                    <textarea type="textarea" class="form-control" id="description"></textarea>
+                    <textarea type="textarea" class="form-control" asp-for="Tone.Description" id="description" maxlength="100"></textarea>
                 </div>
-                <button type="button" class="btn btn-danger mt-3">Add Tone</button>
-            </form>
-        </div>
+                <input type="submit" value="Add Tone" class="btn btn-danger mt-3"/>
+            </div>
+        </form>
     </div>
 </div>
-
-@{
-
-}

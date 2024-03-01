@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using ToneVault.Models;
 using ToneVault.Web.Constants;
 
@@ -43,5 +45,20 @@ public class ToneService
         var json = await response.Content.ReadAsStringAsync();
         var tone = JsonSerializer.Deserialize<Tone>(json);
         return tone;
+    }
+
+    public async Task CreateTone(Tone tone)
+    {
+        using var client = new HttpClient();
+        
+        var content = JsonSerializer.Serialize(tone);
+        var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
+        
+        var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
+        var requestHeader = AuthConstant.ApiKeyRequestHeader;
+        client.DefaultRequestHeaders.Add(requestHeader, apiKey);
+        
+        var post = await client.PostAsync("https://tonevaultapi.azurewebsites.net/tones", bodyContent);
+        var response = post.Content.ReadAsStringAsync();
     }
 }
