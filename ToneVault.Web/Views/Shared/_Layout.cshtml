@@ -9,28 +9,32 @@
     <link rel="stylesheet" href="~/ToneVault.Web.styles.css" asp-append-version="true"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 justify-content-around" style="background-color: #212529">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+            <a class="navbar-brand text-white signika-negative-title" asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="../img/Tone Vault Logo Red.png" alt="Tone Vault" style="max-height: 65px; max-width: 65px"/>
+                Tone Vault
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end signika-negative">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Browse">Browse</a>
+                    <li class="nav-item ">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Browse"><i class="fa-solid fa-list"></i> Browse</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddTone">Add New Tones</a>
+                    <li class="nav-item  ">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AddTone"><i class="fa-solid fa-guitar"></i> Add Tones</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="https://github.com/KalebGarrett/ToneVault" target="_blank">GitHub</a>
+                    <li class="nav-item ">
+                        <a class="nav-link text-white" href="https://github.com/KalebGarrett/ToneVault" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +46,7 @@
 </main>
 <footer class="footer" style="background-color: #212529">
     <div class="container text-white">
-        &copy; @DateTime.UtcNow.Year - ToneVault | All Rights Reserved
+        &copy; @DateTime.UtcNow.ToLocalTime().Year - ToneVault | All Rights Reserved
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
