@@ -1,0 +1,19 @@
+﻿@model ToneFormModel
+@{
+ 
+    ViewData["Title"] = "Add Tone";
+    ViewBag.Controller = "AddTone";
+    ViewBag.Method = "post";
+    ViewBag.ButtonText = "Add Tone";
+}
+
+<style>
+    body
+    {
+        background-image: url("@ViewBag.ImagePath");
+    }
+</style>
+
+@{
+    await Html.RenderPartialAsync("ToneForm");
+}

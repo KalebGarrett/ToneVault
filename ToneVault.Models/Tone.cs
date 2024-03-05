@@ -22,6 +22,7 @@ public class Tone : BaseResource
 
     [JsonPropertyName("equalizer")] public Equalizer Equalizer { get; set; }
 
+    [Required(ErrorMessage = "Description is required")]
     [MaxLength(100)]
     [JsonPropertyName("description")]
     public string Description { get; set; }

@@ -26,14 +26,9 @@
                         <tr>
                             <th scope="col">Tone Name</th>
                             <th scope="col">Genre</th>
-                            <th scope="col">Gain</th>
-                            <th scope="col">Bass</th>
-                            <th scope="col">Middle</th>
-                            <th scope="col">Treble</th>
-                            <th scope="col">Reverb</th>
-                            <th scope="col">Volume</th>
                             <th scope="col">Description</th>
                             <th scope="col">Created By</th>
+                            <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,14 +37,21 @@
                             <tr>
                                 <td>@tones.ToneName</td>
                                 <td>@tones.Genre</td>
-                                <td>@tones.Equalizer.Gain</td>
-                                <td>@tones.Equalizer.Bass</td>
-                                <td>@tones.Equalizer.Middle</td>
-                                <td>@tones.Equalizer.Treble</td>
-                                <td>@tones.Equalizer.Reverb</td>
-                                <td>@tones.Equalizer.Volume</td>
                                 <td>@tones.Description</td>
-                                <td><a href="/tone/@tones.Id" class="text-decoration-none link-danger">@tones.CreatedBy</a></td>
+                                <td>
+                                    @tones.CreatedBy
+                                </td>
+                                <td>
+                                    <a class="btn btn-light" href="/tone/@tones.Id">
+                                        <i class="fa-solid fa-question"></i>
+                                    </a>
+                                    <a class="btn btn-warning" href="/edit/@tones.Id">
+                                        <i class="fa-solid fa-pen-to-square text-white"></i>
+                                    </a>
+                                    <a class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         }
                         </tbody>
@@ -57,14 +59,9 @@
                         <tr>
                             <th scope="col">Tone Name</th>
                             <th scope="col">Genre</th>
-                            <th scope="col">Gain</th>
-                            <th scope="col">Bass</th>
-                            <th scope="col">Middle</th>
-                            <th scope="col">Treble</th>
-                            <th scope="col">Reverb</th>
-                            <th scope="col">Volume</th>
                             <th scope="col">Description</th>
                             <th scope="col">Created By</th>
+                            <th scope="col">Actions</th>
                         </tr>
                         </tfoot>
                     </table>

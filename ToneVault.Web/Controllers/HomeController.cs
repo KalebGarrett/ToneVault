@@ -10,7 +10,6 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly ToneService _toneService;
-    public bool ShowErrors { get; set; } = false;
 
     public HomeController(ILogger<HomeController> logger, ToneService toneService)
     {
@@ -18,6 +17,7 @@ public class HomeController : Controller
         _toneService = toneService;
     }
 
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var model = new IndexViewModel
@@ -28,6 +28,7 @@ public class HomeController : Controller
         return View(model);
     }
 
+    [HttpGet]
     public async Task<IActionResult> Browse()
     {
         var model = new BrowseViewModel
@@ -48,23 +49,34 @@ public class HomeController : Controller
         ViewBag.ImagePath = "../img/luana-azevedo-OYVaNuVoqVw-unsplash.jpg";
         return View(model);
     }
-    
-    [HttpGet("AddNewTones")]
-    public IActionResult AddNewTones()
+
+    [HttpGet("AddTone")]
+    public IActionResult AddTone()
     {
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return View();
     }
-    
-    [HttpPost("AddNewTones")]
-    public async Task<IActionResult> AddNewTones(AddNewTonesModel model)
+
+    [HttpPost("AddTone")]
+    public async Task<IActionResult> AddTone(ToneFormModel model)
     {
         model.Tone.Id = Guid.NewGuid().ToString();
-        await _toneService.CreateTone(model.Tone);
+        await _toneService.AddTone(model.Tone);
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
-        return RedirectToAction("AddNewTones");
+        return RedirectToAction("AddTone");
     }
 
+    [HttpGet("edit/{id}")]
+    public async Task<IActionResult> EditTone(string id)
+    {
+        var model = new ToneFormModel
+        {
+            Tone = await _toneService.Get(id)
+        };
+        ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
+        return View(model);
+    }
+    
     public IActionResult Privacy()
     {
         return View();

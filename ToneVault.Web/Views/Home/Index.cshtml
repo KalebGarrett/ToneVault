@@ -12,7 +12,16 @@
         <div class="text-white col-md-6">
             <img src="../img/Tone Vault Logo Red.png" alt="Tone Vault" class="img-fluid"/>
             <h1 class="display-4">Welcome To Tone Vault</h1>
-            <h5>Over @Model.Tones.Count Tones To Choose From</h5>
+            <h5>
+                @if (Model.Tones.Count > 0)
+                {
+                    <h5> Over @Model.Tones.Count Tones To Choose From</h5>
+                }
+                else
+                {
+                    <h5>There are currently no tones in the repository</h5>
+                }
+            </h5>
         </div>
     </div>
 </div>

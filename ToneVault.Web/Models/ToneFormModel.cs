@@ -2,7 +2,8 @@
 
 namespace ToneVault.Web.Models;
 
-public class AddNewTonesModel
+public class ToneFormModel
 {
     public Tone Tone { get; set; }
+    public AddToneResponse AddToneResponse { get; set; }
 }
