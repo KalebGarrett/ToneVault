@@ -28,7 +28,7 @@ public class HomeController : Controller
         return View(model);
     }
 
-    [HttpGet]
+    [HttpGet("browse")]
     public async Task<IActionResult> Browse()
     {
         var model = new BrowseViewModel
@@ -58,14 +58,14 @@ public class HomeController : Controller
         return View(model);
     }
 
-    [HttpGet]
+    [HttpGet("addtone")]
     public IActionResult AddTone()
     {
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return View();
     }
 
-    [HttpPost]
+    [HttpPost("addtone")]
     public async Task<IActionResult> AddTone(ToneFormModel model)
     {
         model.Tone.Id = Guid.NewGuid().ToString();
@@ -86,9 +86,8 @@ public class HomeController : Controller
     }
 
     [HttpPost("edit/{id}")]
-    public async Task<IActionResult> EditTone(string id, ToneFormModel model)
+    public async Task<IActionResult> EditTone(ToneFormModel model)
     {
-        model.Tone.Id = id;
         await _toneService.Update(model.Tone.Id, model.Tone);
         return RedirectToAction("Browse");
     }
