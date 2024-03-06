@@ -269,3 +269,4 @@ __pycache__/
 
 # Tone Vault Db
 /ToneVaultDb.txt
+ToneVault.Web/Secrets

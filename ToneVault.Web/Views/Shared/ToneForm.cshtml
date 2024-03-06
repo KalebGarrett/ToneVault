@@ -1,11 +1,12 @@
-﻿@model ToneFormModel
+﻿@using ToneVault.Web.Secrets
+@model ToneFormModel
 
 @{
     var controller = ViewBag.Controller as string ?? "";
     var method = ViewBag.Method as string ?? "";
     var buttonText = ViewBag.ButtonText as string ?? "";
+    var reCaptcha = new ReCaptcha();
 }
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -60,7 +61,11 @@
                     <label class="mt-2" for="description">Description <span class="text-danger">*</span></label>
                     <textarea type="textarea" class="form-control" asp-for="Tone.Description" id="description" maxlength="100" required="required"></textarea>
                 </div>
-                <input type="submit" value="@buttonText" class="btn btn-danger mt-3"/>
+                <div class="form-group mt-3">
+                    <div class="g-recaptcha" data-sitekey="@reCaptcha.SiteKey"></div>
+                    <p id="reCaptcha-error" class="text-danger"></p>
+                </div>
+                <input type="button" value="@buttonText" class="btn btn-danger mt-1" onclick="checkForm()" id="submit-btn"/>
             </div>
         </form>
     </div>

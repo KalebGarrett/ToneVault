@@ -17,7 +17,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 justify-content-around" style="background-color: #212529">
         <div class="container-fluid">
-            <a class="navbar-brand text-white signika-negative-title" asp-area="" asp-controller="Home" asp-action="Index">
+            <a class="navbar-brand text-white signika-negative" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="../img/Tone Vault Logo Red.png" alt="Tone Vault" style="max-height: 65px; max-width: 65px"/>
                 Tone Vault
             </a>
@@ -52,6 +52,7 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
