@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using ToneVault.Models;
 using ToneVault.Web.Models;
 using ToneVault.Web.Services;
 
@@ -37,7 +38,7 @@ public class HomeController : Controller
         ViewBag.ImagePath = "../img/luana-azevedo-OYVaNuVoqVw-unsplash.jpg";
         return View(model);
     }
-    
+
     [HttpGet("delete/{id}")]
     public async Task<IActionResult> Delete(string id)
     {
@@ -63,7 +64,7 @@ public class HomeController : Controller
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return View();
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> AddTone(ToneFormModel model)
     {
@@ -84,10 +85,10 @@ public class HomeController : Controller
         return View(model);
     }
 
-    // Keeps adding data to url bar
-    [HttpPost("edit")]
-    public async Task<IActionResult> EditTone(ToneFormModel model)
+    [HttpPost("edit/{id}")]
+    public async Task<IActionResult> EditTone(string id, ToneFormModel model)
     {
+        model.Tone.Id = id;
         await _toneService.Update(model.Tone.Id, model.Tone);
         return RedirectToAction("Browse");
     }

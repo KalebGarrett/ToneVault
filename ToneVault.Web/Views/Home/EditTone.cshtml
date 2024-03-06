@@ -1,0 +1,18 @@
+﻿@model ToneFormModel
+@{
+    ViewData["Title"] = $"Edit Tone - {Model.Tone.ToneName}";
+    ViewBag.Controller = "EditTone";
+    ViewBag.Method = "post";
+    ViewBag.ButtonText = "Edit Tone";
+}
+
+<style>
+    body
+    {
+        background-image: url("@ViewBag.ImagePath");
+    }
+</style>
+
+@{
+    await Html.RenderPartialAsync("ToneForm");
+}

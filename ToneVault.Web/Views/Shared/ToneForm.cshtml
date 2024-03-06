@@ -8,6 +8,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        @Html.HiddenFor(form => form.Tone.Id);
         <form asp-action="@controller" method="@method" class="col-md-6">
             <div class="card p-3 bg-dark-opacity">
                 <img src="../img/Tone Vault Logo Red.png" class="logo-center" alt="Tone Vault"/>
@@ -51,6 +52,8 @@
                 <div class="form-group text-white">
                     <label class="mt-2" for="created-by">Created By <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" asp-for="Tone.CreatedBy" id="created-by" maxlength="35" required="required">
+                    @Html.HiddenFor(form => form.Tone.CreatedAt);
+                    @Html.HiddenFor(form => form.Tone.Version);
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="description">Description <span class="text-danger">*</span></label>

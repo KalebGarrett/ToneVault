@@ -76,10 +76,10 @@ public class ToneService
         var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
         var requestHeader = AuthConstant.ApiKeyRequestHeader;
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
-
+        
         var editToneResponse = await client.PutAsync($"https://tonevaultapi.azurewebsites.net/tones/{id}", bodyContent);
         var editToneContent = await editToneResponse.Content.ReadAsStringAsync();
-        var response = JsonSerializer.Deserialize<ToneResponse>(editToneContent, new JsonSerializerOptions());
+        var response = JsonSerializer.Deserialize<ToneResponse>(editToneContent);
         if (!editToneResponse.IsSuccessStatusCode) return response;
         return new ToneResponse();
     }
