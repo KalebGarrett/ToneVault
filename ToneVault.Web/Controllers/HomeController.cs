@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using ToneVault.Models;
 using ToneVault.Web.Models;
 using ToneVault.Web.Services;
 
@@ -38,6 +37,14 @@ public class HomeController : Controller
         ViewBag.ImagePath = "../img/luana-azevedo-OYVaNuVoqVw-unsplash.jpg";
         return View(model);
     }
+    
+    [HttpGet("delete/{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        await _toneService.Delete(id);
+        ViewBag.ImagePath = "../img/luana-azevedo-OYVaNuVoqVw-unsplash.jpg";
+        return RedirectToAction("Browse");
+    }
 
     [HttpGet("tone/{id}")]
     public async Task<IActionResult> Tone(string id)
@@ -50,18 +57,18 @@ public class HomeController : Controller
         return View(model);
     }
 
-    [HttpGet("AddTone")]
+    [HttpGet]
     public IActionResult AddTone()
     {
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return View();
     }
-
-    [HttpPost("AddTone")]
+    
+    [HttpPost]
     public async Task<IActionResult> AddTone(ToneFormModel model)
     {
         model.Tone.Id = Guid.NewGuid().ToString();
-        await _toneService.AddTone(model.Tone);
+        await _toneService.Create(model.Tone);
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return RedirectToAction("AddTone");
     }
@@ -76,7 +83,15 @@ public class HomeController : Controller
         ViewBag.ImagePath = "../img/parker-coffman-GgsG8aNLgjQ-unsplash.jpg";
         return View(model);
     }
-    
+
+    // Keeps adding data to url bar
+    [HttpPost("edit")]
+    public async Task<IActionResult> EditTone(ToneFormModel model)
+    {
+        await _toneService.Update(model.Tone.Id, model.Tone);
+        return RedirectToAction("Browse");
+    }
+
     public IActionResult Privacy()
     {
         return View();

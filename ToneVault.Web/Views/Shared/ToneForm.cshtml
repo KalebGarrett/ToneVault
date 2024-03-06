@@ -14,11 +14,11 @@
                 <hr class="text-white"/>
                 <div class="form-group text-white">
                     <label for="name">Tone Name<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" asp-for="Tone.ToneName" id="toneName" maxlength="35">
+                    <input type="text" class="form-control" asp-for="Tone.ToneName" id="toneName" maxlength="35" required="required">
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="genre">Genre<span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" asp-for="Tone.Genre" id="genre" maxlength="35">
+                    <input type="text" class="form-control" asp-for="Tone.Genre" id="genre" maxlength="35" required="required">
                 </div>
                 <hr class="text-white"/>
                 <div class="row">
@@ -50,11 +50,11 @@
                 <hr class="text-white"/>
                 <div class="form-group text-white">
                     <label class="mt-2" for="created-by">Created By <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" asp-for="Tone.CreatedBy" id="created-by" maxlength="35">
+                    <input type="text" class="form-control" asp-for="Tone.CreatedBy" id="created-by" maxlength="35" required="required">
                 </div>
                 <div class="form-group text-white">
                     <label class="mt-2" for="description">Description <span class="text-danger">*</span></label>
-                    <textarea type="textarea" class="form-control" asp-for="Tone.Description" id="description" maxlength="100"></textarea>
+                    <textarea type="textarea" class="form-control" asp-for="Tone.Description" id="description" maxlength="100" required="required"></textarea>
                 </div>
                 <input type="submit" value="@buttonText" class="btn btn-danger mt-3"/>
             </div>

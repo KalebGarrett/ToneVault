@@ -2,7 +2,7 @@
 
 namespace ToneVault.Models;
 
-public class AddToneResponse
+public class ToneResponse
 {
     [JsonPropertyName("type")]
     public string Type { get; set; }

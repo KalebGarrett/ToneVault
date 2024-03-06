@@ -26,12 +26,12 @@ public class ToneService
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
         var response = await client.GetAsync("https://tonevaultapi.azurewebsites.net/tones");
 
-        if (!response.IsSuccessStatusCode) return null;
+        if (!response.IsSuccessStatusCode) return new List<Tone>();
         var json = await response.Content.ReadAsStringAsync();
         var tones = JsonSerializer.Deserialize<List<Tone>>(json);
         return tones;
     }
-    
+
     public async Task<Tone> Get(string id)
     {
         using var client = new HttpClient();
@@ -48,39 +48,50 @@ public class ToneService
         return tone;
     }
 
-    public async Task<AddToneResponse> AddTone(Tone tone)
+    public async Task<ToneResponse> Create(Tone tone)
     {
         using var client = new HttpClient();
-        
+
         var content = JsonSerializer.Serialize(tone);
         var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
-        
+
         var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
         var requestHeader = AuthConstant.ApiKeyRequestHeader;
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
-        
-        var createToneResult = await client.PostAsync("https://tonevaultapi.azurewebsites.net/tones", bodyContent);
-        var createToneContent = await createToneResult.Content.ReadAsStringAsync();
-        var response = JsonSerializer.Deserialize<AddToneResponse>(createToneContent, new JsonSerializerOptions());
-        if (!createToneResult.IsSuccessStatusCode) return response;
-        return new AddToneResponse();
+
+        var createToneResponse = await client.PostAsync("https://tonevaultapi.azurewebsites.net/tones", bodyContent);
+        var createToneContent = await createToneResponse.Content.ReadAsStringAsync();
+        var response = JsonSerializer.Deserialize<ToneResponse>(createToneContent, new JsonSerializerOptions());
+        if (!createToneResponse.IsSuccessStatusCode) return response;
+        return new ToneResponse();
     }
 
-    public async Task<Tone> EditTone(string id, Tone tone)
+    public async Task<ToneResponse> Update(string id, Tone tone)
     {
         using var client = new HttpClient();
-        
+
         var content = JsonSerializer.Serialize(tone);
         var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
-        
+
         var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
         var requestHeader = AuthConstant.ApiKeyRequestHeader;
         client.DefaultRequestHeaders.Add(requestHeader, apiKey);
 
-        var editToneResult = await client.PutAsync($"https://tonevaultapi.azurewebsites.net/tones/{id}", bodyContent);
-        var editToneContent = await editToneResult.Content.ReadAsStringAsync();
-        tone = JsonSerializer.Deserialize<Tone>(editToneContent, new JsonSerializerOptions());
-        if (!editToneResult.IsSuccessStatusCode) return null;
-        return tone;
+        var editToneResponse = await client.PutAsync($"https://tonevaultapi.azurewebsites.net/tones/{id}", bodyContent);
+        var editToneContent = await editToneResponse.Content.ReadAsStringAsync();
+        var response = JsonSerializer.Deserialize<ToneResponse>(editToneContent, new JsonSerializerOptions());
+        if (!editToneResponse.IsSuccessStatusCode) return response;
+        return new ToneResponse();
+    }
+
+    public async Task Delete(string id)
+    {
+        using var client = new HttpClient();
+
+        var apiKey = _configuration.GetValue<string>(AuthConstant.ApiKeySectionName);
+        var requestHeader = AuthConstant.ApiKeyRequestHeader;
+        client.DefaultRequestHeaders.Add(requestHeader, apiKey);
+
+        await client.DeleteAsync($"https://tonevaultapi.azurewebsites.net/tones/{id}");
     }
 }

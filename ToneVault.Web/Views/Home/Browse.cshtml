@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <h1 class="display-4 text-white bg-dark-opacity inline-bg-dark text-center p-3">Browse Tones</h1>
+            <h1 class="text-white bg-dark-opacity inline-bg-dark text-center p-3 signika-negative" style="font-size: 55px !important;">Browse Tones</h1>
         </div>
     </div>
     <div class="row mt-2">
@@ -48,7 +48,7 @@
                                     <a class="btn btn-warning" href="/edit/@tones.Id">
                                         <i class="fa-solid fa-pen-to-square text-white"></i>
                                     </a>
-                                    <a class="btn btn-danger">
+                                    <a class="btn btn-danger" href="/delete/@tones.Id" data-bs-toggle="modal" data-bs-target="#deleteModal" data-tone-id="@tones.Id">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
