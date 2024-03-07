@@ -14,3 +14,7 @@ Website Link:
 ![image](/Images/ToneVault.png)
 
 ![image](/Images/BrowseTones.png)
+
+![image](/Images/Tone.png)
+
+![image](/Images/AddTone.png)
