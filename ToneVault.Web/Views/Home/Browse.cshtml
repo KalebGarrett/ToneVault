@@ -32,7 +32,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var tones in Model.Tones.OrderBy(x => x.ToneName))
+                        @foreach (var tones in Model.Tones)
                         {
                             <tr>
                                 <td>@tones.ToneName</td>
