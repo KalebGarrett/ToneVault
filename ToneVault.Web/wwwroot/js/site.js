@@ -1,24 +1,25 @@
-﻿new DataTable('#tonesTable', {
-    language: {
-        lengthMenu: '_MENU_',
-    },
+﻿$(document).ready(function () {
+    let table = $("#tonesTable").DataTable({
+        language: {
+            lengthMenu: "_MENU_",
+        }
+    });
+    
+    $(".delete-tone").click(function (){
+        const toneId = $(this).attr("data-tone-id");
+        $("#modal-delete-btn").click(function (){
+            $(this).attr("href", `/delete/${toneId}`)
+        });
+    });
 });
 
-function checkForm(){
-    if(!document.getElementById("g-recaptcha-response").value){
+function checkForm() {
+    if (!document.getElementById("g-recaptcha-response").value) {
         document.getElementById("reCaptcha-error").innerHTML =
             "Please verify that you're not a robot!";
         return false;
-    }else{
+    } else {
         document.getElementById("submit-btn").type = "submit";
         return true;
     }
-}
-
-function deleteTone(){
-    const deleteTone = document.getElementById("delete-tone")
-    const toneId = deleteTone.getAttribute("tone-id")
-    const href = "/delete/" + toneId;
-    document.getElementById("modal-delete-btn").href = 
-        `${href}`;
 }

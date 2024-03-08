@@ -48,7 +48,7 @@
                                     <a class="btn btn-warning" href="/edit/@tones.Id">
                                         <i class="fa-solid fa-pen-to-square text-white"></i>
                                     </a>
-                                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" id="delete-tone" tone-id="@tones.Id">
+                                    <a class="btn btn-danger delete-tone" data-bs-toggle="modal" data-bs-target="#deleteModal" data-tone-id="@tones.Id">
                                         <i class="fa-solid fa-trash"></i>
                                     </a>
                                 </td>
@@ -83,7 +83,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-danger" id="modal-delete-btn" href="" onclick="deleteTone()">Delete</a>
+                <a class="btn btn-danger" id="modal-delete-btn">Delete</a>
             </div>
         </div>
     </div>
